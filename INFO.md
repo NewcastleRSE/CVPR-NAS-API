@@ -1,3 +1,4 @@
+cd ..
 # CVPR-NAS 2022 Starting Kit
 Hi, thanks for participating in the 2nd CVPR-NAS Unseen Dataset Competition!
 
