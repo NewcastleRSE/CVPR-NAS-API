@@ -1,31 +1,45 @@
-# Standard Project
-A template repo for the standard RSE project
+# CVPR-NAS
 
 ## About
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin ante at eleifend eleifend. Sed non vestibulum nisi. Aliquam vel condimentum quam. Donec fringilla et purus at auctor. Praesent euismod vitae metus non consectetur. Sed interdum aliquet nisl at efficitur. Nulla urna quam, gravida eget elementum eget, mattis nec tortor. Fusce ut neque tellus. Integer at magna feugiat lacus porta posuere eget vitae metus.
+CVPR-NAS is an annual competition that compares how well Neural Search Architectures can apply machine learning methods to unseen datasets. Competitors must register with a website so that they can download a starting kit and datasets, then use these resources to complete their NAS algorithm.
 
-Curabitur a tempus arcu. Maecenas blandit risus quam, quis convallis justo pretium in. Suspendisse rutrum, elit at venenatis cursus, dolor ligula iaculis dui, ut dignissim enim justo at ligula. Donec interdum dignissim egestas. Nullam nec ultrices enim. Nam quis arcu tincidunt, auctor purus sit amet, aliquam libero. Fusce rhoncus lectus ac imperdiet varius. Sed gravida urna eros, ac luctus justo condimentum nec. Integer ultrices nibh in neque sagittis, at pretium erat pretium. Praesent feugiat purus id iaculis laoreet. Proin in tellus tristique, congue ante in, sodales quam. Sed imperdiet est tortor, eget vestibulum tortor pulvinar volutpat. In et pretium nisl.
+Their code based entry is then uploaded to the same website which must then allocate resources and run their submitted code. This code run is time limited to one hour. There will only be a limited number of GPUs available to run the code, so jobs may be queued and executed in the order received.
+
+Between 5-10 submissions are expected per day during the allowed submission period. Competitors will ideally have email notification of their code status. It is expected that code will be uploaded in a zip format.
+
 
 ### Project Team
-Dr L. Ipsum, Newcastle University  ([lorem.ipsum@newcastle.ac.uk](mailto:lorem.ipsum@newcastle.ac.uk))  
-Professor D. Sit Amet, XY University  ([d.sit.amet@newcastle.ac.uk](mailto:d.sit.amet@example.com))  
+Stephen McGough - ([stephen.mcgough@newcastle.ac.uk](mailto:stephen.mcgough@newcastle.ac.uk))
+Rob Geada - ([rob@geada.net](mailto:rob@geada.net))
+David Towers - ([d.towers2@newcastle.ac.uk](mailto:d.towers2@newcastle.ac.uk))
+Nik Khadijah Nik Aznan  - ([nik.nik-aznan@newcastle.ac.uk](mailto:nik.nik-aznan@newcastle.ac.uk))
+Amir Atapour-Abarghouei - ([amir.atapour-abarghouei@durham.ac.uk](mailto:amir.atapour-abarghouei@durham.ac.uk))
+
 
 ### RSE Contact
-C. Adipiscing  
-RSE Team  
+Rebecca Osselton
 Newcastle University  
-([consectetur.adpiscing@newcastle.ac.uk](mailto:consectetur.adpiscing@newcastle.ac.uk))  
+([rebecca.osselton@newcastle.ac.uk](rebecca.osselton@newcastle.ac.uk))  
 
 ## Built With
 
-This section is intended to list the frameworks and tools you're using to develop this software. Please link to the home page or documentatation in each case.
+[Strapi](https://docs.strapi.io/)  
+[Vue](https://vuejs.org/)  
 
-[Framework 1](https://something.com)  
-[Framework 2](https://something.com)  
-[Framework 3](https://something.com)  
 
 ## Getting Started
+
+No specific technology is preferred for the website, however it must be able to deploy Azure based applications to run the competition code.
+
+Project milestones relate to the phases of the competition.
+
+The website must be able to collect data from running the competition submissions and display a ranking of competitor results.
+
+Last years website is available for reference at: 
+
+https://competitions.codalab.org/competitions/29853 
+
 
 ### Prerequisites
 
@@ -79,19 +93,6 @@ https://nvie.com/posts/a-successful-git-branching-model/
 
 ## License
 
-## Citiation
-
-Please cite the associated papers for this work if you use this code:
-
-```
-@article{xxx2021paper,
-  title={Title},
-  author={Author},
-  journal={arXiv},
-  year={2021}
-}
-```
-
 
 ## Acknowledgements
-This work was funded by a grant from the UK Research Councils, EPSRC grant ref. EP/L012345/1, “Example project title, please update”.
+
