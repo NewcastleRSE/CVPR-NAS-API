@@ -8,29 +8,37 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "sub_id": {
+    "uuid": {
       "type": "uid",
-      "required": true
+      "required": true,
+      "minLength": 36,
+      "maxLength": 36
     },
     "title": {
       "type": "string",
       "required": true,
       "maxLength": 25
     },
-    "path": {
-      "type": "text",
-      "private": true,
-      "unique": true
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "submissions"
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "path": {
+      "type": "string"
     }
   }
 }
