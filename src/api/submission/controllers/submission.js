@@ -75,25 +75,26 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
             console.error(err.message)
         }
         
+        try {
+            // Task configuration object
+            const taskConfig = {
+                id: `${submissionUUID}_process`,
+                displayName: `process submission ${submissionUUID}`,
+                commandLine: `./setup.sh ${response.data.attributes.path}`,
+            };
 
-        // const submissionId = ctx.request.body.data.uuid
-        // const jobId = 'test-submissions'
-
-        // // Task configuration object
-        // const taskConfig = {
-        //     id: `${submissionId}_process`,
-        //     displayName: `process submission ${submissionId}`,
-        //     commandLine: `./setup.sh ${ctx.request.body.data.path}`,
-        // };
-
-        // const task = batchClient.task.add(jobId, taskConfig, function (error, result) {
-        //     if (error !== null) {
-        //         console.log("Error occurred while creating task for " + submissionId + ". Details : " + error.response);
-        //     }
-        //     else {
-        //         console.log("Task for submission : " + submissionId + " submitted successfully");
-        //     }
-        // });
+            // Add task to job
+            const task = batchClient.task.add('test-submissions', taskConfig, function (error, result) {
+                if (error !== null) {
+                    console.log("Error occurred while creating task for " + submissionUUID + ". Details : " + error.response);
+                }
+                else {
+                    console.log("Task for submission : " + submissionUUID + " submitted successfully");
+                }
+            });
+        } catch (err) {
+            console.error(err.message)
+        }
 
         return response;
     },
