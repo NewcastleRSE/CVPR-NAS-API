@@ -12,10 +12,12 @@
   "devDependencies": {},
   "dependencies": {
     "@azure/batch": "^7.0.0",
+    "@azure/storage-blob": "^12.0.0",
     "@strapi/plugin-i18n": "4.0.4",
     "@strapi/plugin-users-permissions": "4.0.4",
     "@strapi/strapi": "4.0.4",
-    "sqlite3": "5.0.2"
+    "sqlite3": "5.0.2",
+    "uuid": "^8.3.2"
   },
   "author": {
     "name": "A Strapi developer"
