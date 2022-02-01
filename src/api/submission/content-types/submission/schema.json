@@ -39,6 +39,69 @@
     },
     "path": {
       "type": "string"
+    },
+    "adalineRawScore": {
+      "type": "string"
+    },
+    "adalineAdjScore": {
+      "type": "string"
+    },
+    "adalineParams": {
+      "type": "string"
+    },
+    "adalineRuntime": {
+      "type": "string"
+    },
+    "caitieRawScore": {
+      "type": "string"
+    },
+    "caitieAdjScore": {
+      "type": "string"
+    },
+    "caitieParams": {
+      "type": "string"
+    },
+    "caitieRuntime": {
+      "type": "string"
+    },
+    "fabianRawScore": {
+      "type": "string"
+    },
+    "fabianAdjScore": {
+      "type": "string"
+    },
+    "fabianParams": {
+      "type": "string"
+    },
+    "fabianRuntime": {
+      "type": "string"
+    },
+    "lameloRawScore": {
+      "type": "string"
+    },
+    "lameloAdjScore": {
+      "type": "string"
+    },
+    "lameloParams": {
+      "type": "string"
+    },
+    "lameloRuntime": {
+      "type": "string"
+    },
+    "mateoRawScore": {
+      "type": "string"
+    },
+    "mateoAdjScore": {
+      "type": "string"
+    },
+    "mateoParams": {
+      "type": "string"
+    },
+    "mateoRuntime": {
+      "type": "string"
+    },
+    "totalScore": {
+      "type": "string"
     }
   }
 }
