@@ -13,4 +13,4 @@ sed -i "s/SSH_PORT/$SSH_PORT/g" /etc/ssh/sshd_config
 SAS_URL="$SAS_PATH/data.db$SAS_TOKEN"
 azcopy cp $SAS_URL /usr/local/src/sqlite/data.db
 ## Start Cron and App
-service cron start && yarn dev
+service cron start && yarn run start
