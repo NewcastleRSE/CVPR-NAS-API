@@ -66,6 +66,8 @@ COPY sqlite/dailyBackup.sh ./sqlite/dailyBackup.sh
 COPY package.json ./
 COPY favicon.ico ./
 
+RUN mkdir public/uploads
+
 # Install from source
 RUN yarn install
 
