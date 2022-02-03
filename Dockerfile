@@ -58,8 +58,9 @@ RUN touch /var/log/persist.log
 RUN touch /var/log/backup.log
 
 # Copy source code to image
+COPY config ./config
 COPY src ./src
-COPY public ./public
+COPY public/robots.txt ./public/robots.txt
 COPY sqlite/persist.sh ./sqlite/persist.sh
 COPY sqlite/dailyBackup.sh ./sqlite/dailyBackup.sh
 COPY package.json ./
