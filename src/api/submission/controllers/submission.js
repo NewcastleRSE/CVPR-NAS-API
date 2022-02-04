@@ -38,12 +38,12 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
         const submissionUUID = uuidv4()
 
         // Upload File
-        const file = ctx.request.files['files.file']
-        const stream = fs.createReadStream(file.path);
-        const blobName = submissionUUID + '.zip'
-        const blockBlobClient = containerClient.getBlockBlobClient(blobName)
-
         try {
+            const file = ctx.request.files['files.file']
+            const stream = fs.createReadStream(file.path);
+            const blobName = submissionUUID + '.zip'
+            const blockBlobClient = containerClient.getBlockBlobClient(blobName)
+
             await blockBlobClient.uploadStream(stream, uploadOptions.bufferSize, uploadOptions.maxBuffers, { blobHTTPHeaders: { blobContentType: file.type } })
             console.log(`File ${blobName} uploaded to Azure Blob storage.`)
 
