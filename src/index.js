@@ -1,4 +1,5 @@
 'use strict';
+import * as Sentry from '@sentry/node';
 
 module.exports = {
   /**
@@ -7,7 +8,15 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register(/*{ strapi }*/) {
+    // Enable Sentry logging if in production mode
+    if(process.env.NODE_ENV === 'production') {
+      Sentry.init({
+        dsn: "https://c3e62147e74043bfb9ccc60568e01566@o1080315.ingest.sentry.io/6183678",
+        tracesSampleRate: 1.0,
+      });
+    }
+  },
 
   /**
    * An asynchronous bootstrap function that runs before
