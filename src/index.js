@@ -1,5 +1,4 @@
 'use strict';
-import * as Sentry from '@sentry/node';
 
 module.exports = {
   /**
@@ -11,6 +10,9 @@ module.exports = {
   register(/*{ strapi }*/) {
     // Enable Sentry logging if in production mode
     if(process.env.NODE_ENV === 'production') {
+
+      const Sentry = require("@sentry/node");
+
       Sentry.init({
         dsn: "https://c3e62147e74043bfb9ccc60568e01566@o1080315.ingest.sentry.io/6183678",
         tracesSampleRate: 1.0,
