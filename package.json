@@ -13,6 +13,8 @@
   "dependencies": {
     "@azure/batch": "^7.0.0",
     "@azure/storage-blob": "^12.8.0",
+    "@sentry/node": "^6.17.4",
+    "@sentry/tracing": "^6.17.4",
     "@strapi/plugin-i18n": "4.0.4",
     "@strapi/plugin-users-permissions": "4.0.4",
     "@strapi/strapi": "4.0.4",
