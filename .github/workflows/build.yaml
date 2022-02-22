@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - '*'
+      - '!main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@3.04
+      with:
+        registry: cvprnas.azurecr.io
+        name: cvprnas.azurecr.io/api
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+        tags: "latest"
+        buildargs:  |
+          HOST="0.0.0.0"
+          PORT=8080
+          IS_PROXIED=false
+          DATABASE_FILENAME=/home/sqlite/data.db?cache=private&mode=rwc&_journal_mode=WAL
+          PUBLIC_URL="https://cvprnas.azurewebsites.net/"
+          PUBLIC_ADMIN_URL="https://cvprnas.azurewebsites.net/dashboard"
+          JWT_SECRET=${{ secrets.JWT_SECRET }}
+          API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }}
+          STORAGE_ACCOUNT_NAME=cvprnas
+          STORAGE_ACCOUNT_KEY=${{ secrets.STORAGE_ACCOUNT_KEY }}
+          STORAGE_CONTAINER_NAME=submissions
+          BATCH_ACCOUNT_NAME=cvprnas
+          BATCH_ACCOUNT_KEY=${{ secrets.BATCH_ACCOUNT_KEY }}
+          BATCH_ENDPOINT=https://cvprnas.uksouth.batch.azure.com
+          SAS_PATH=${{ secrets.SAS_PATH }}
+          SAS_TOKEN=${{ secrets.SAS_TOKEN }}

@@ -70,6 +70,7 @@ $RECYCLE.BIN/
 *.sql
 *.sqlite
 *.sqlite3
+sqlite/data.db
 
 
 ############################
@@ -107,6 +108,7 @@ coverage
 ############################
 
 .env
+.env.example
 license.txt
 exports
 *.cache

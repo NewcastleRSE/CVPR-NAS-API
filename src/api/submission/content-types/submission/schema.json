@@ -8,29 +8,100 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "sub_id": {
+    "uuid": {
       "type": "uid",
-      "required": true
+      "required": true,
+      "minLength": 36,
+      "maxLength": 36
     },
     "title": {
       "type": "string",
       "required": true,
       "maxLength": 25
     },
-    "path": {
-      "type": "text",
-      "private": true,
-      "unique": true
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "submissions"
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "path": {
+      "type": "string"
+    },
+    "Adaline_Raw_Score": {
+      "type": "string"
+    },
+    "Adaline_Adj_Score": {
+      "type": "string"
+    },
+    "Adaline_Params": {
+      "type": "string"
+    },
+    "Adaline_Runtime": {
+      "type": "string"
+    },
+    "Caitie_Raw_Score": {
+      "type": "string"
+    },
+    "Caitie_Adj_Score": {
+      "type": "string"
+    },
+    "Caitie_Params": {
+      "type": "string"
+    },
+    "Caitie_Runtime": {
+      "type": "string"
+    },
+    "Fabian_Raw_Score": {
+      "type": "string"
+    },
+    "Fabian_Adj_Score": {
+      "type": "string"
+    },
+    "Fabian_Params": {
+      "type": "string"
+    },
+    "Fabian_Runtime": {
+      "type": "string"
+    },
+    "LaMelo_Raw_Score": {
+      "type": "string"
+    },
+    "LaMelo_Adj_Score": {
+      "type": "string"
+    },
+    "LaMelo_Params": {
+      "type": "string"
+    },
+    "LaMelo_Runtime": {
+      "type": "string"
+    },
+    "Mateo_Raw_Score": {
+      "type": "string"
+    },
+    "Mateo_Adj_Score": {
+      "type": "string"
+    },
+    "Mateo_Params": {
+      "type": "string"
+    },
+    "Mateo_Runtime": {
+      "type": "string"
+    },
+    "Final_Score": {
+      "type": "string"
     }
   }
 }

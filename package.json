@@ -11,10 +11,15 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.0.4",
-    "@strapi/plugin-users-permissions": "4.0.4",
+    "@azure/batch": "^7.0.0",
+    "@azure/storage-blob": "^12.8.0",
+    "@sentry/node": "^6.17.4",
+    "@sentry/tracing": "^6.17.4",
     "@strapi/plugin-i18n": "4.0.4",
-    "sqlite3": "5.0.2"
+    "@strapi/plugin-users-permissions": "4.0.4",
+    "@strapi/strapi": "4.0.4",
+    "sqlite3": "5.0.2",
+    "uuid": "^8.3.2"
   },
   "author": {
     "name": "A Strapi developer"
