@@ -32,7 +32,7 @@
     "file": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "files"
       ]
@@ -40,67 +40,67 @@
     "path": {
       "type": "string"
     },
-    "adalineRawScore": {
+    "Adaline_Raw_Score": {
       "type": "string"
     },
-    "adalineAdjScore": {
+    "Adaline_Adj_Score": {
       "type": "string"
     },
-    "adalineParams": {
+    "Adaline_Params": {
       "type": "string"
     },
-    "adalineRuntime": {
+    "Adaline_Runtime": {
       "type": "string"
     },
-    "caitieRawScore": {
+    "Caitie_Raw_Score": {
       "type": "string"
     },
-    "caitieAdjScore": {
+    "Caitie_Adj_Score": {
       "type": "string"
     },
-    "caitieParams": {
+    "Caitie_Params": {
       "type": "string"
     },
-    "caitieRuntime": {
+    "Caitie_Runtime": {
       "type": "string"
     },
-    "fabianRawScore": {
+    "Fabian_Raw_Score": {
       "type": "string"
     },
-    "fabianAdjScore": {
+    "Fabian_Adj_Score": {
       "type": "string"
     },
-    "fabianParams": {
+    "Fabian_Params": {
       "type": "string"
     },
-    "fabianRuntime": {
+    "Fabian_Runtime": {
       "type": "string"
     },
-    "lameloRawScore": {
+    "LaMelo_Raw_Score": {
       "type": "string"
     },
-    "lameloAdjScore": {
+    "LaMelo_Adj_Score": {
       "type": "string"
     },
-    "lameloParams": {
+    "LaMelo_Params": {
       "type": "string"
     },
-    "lameloRuntime": {
+    "LaMelo_Runtime": {
       "type": "string"
     },
-    "mateoRawScore": {
+    "Mateo_Raw_Score": {
       "type": "string"
     },
-    "mateoAdjScore": {
+    "Mateo_Adj_Score": {
       "type": "string"
     },
-    "mateoParams": {
+    "Mateo_Params": {
       "type": "string"
     },
-    "mateoRuntime": {
+    "Mateo_Runtime": {
       "type": "string"
     },
-    "totalScore": {
+    "Final_Score": {
       "type": "string"
     }
   }
