@@ -41,67 +41,67 @@
       "type": "string"
     },
     "Adaline_Raw_Score": {
-      "type": "string"
+      "type": "float"
     },
     "Adaline_Adj_Score": {
-      "type": "string"
+      "type": "float"
     },
     "Adaline_Params": {
-      "type": "string"
+      "type": "integer"
     },
     "Adaline_Runtime": {
-      "type": "string"
+      "type": "float"
     },
     "Caitie_Raw_Score": {
-      "type": "string"
+      "type": "float"
     },
     "Caitie_Adj_Score": {
-      "type": "string"
+      "type": "float"
     },
     "Caitie_Params": {
-      "type": "string"
+      "type": "integer"
     },
     "Caitie_Runtime": {
-      "type": "string"
+      "type": "float"
     },
     "Fabian_Raw_Score": {
-      "type": "string"
+      "type": "float"
     },
     "Fabian_Adj_Score": {
-      "type": "string"
+      "type": "float"
     },
     "Fabian_Params": {
-      "type": "string"
+      "type": "integer"
     },
     "Fabian_Runtime": {
-      "type": "string"
+      "type": "float"
     },
     "LaMelo_Raw_Score": {
-      "type": "string"
+      "type": "float"
     },
     "LaMelo_Adj_Score": {
-      "type": "string"
+      "type": "float"
     },
     "LaMelo_Params": {
-      "type": "string"
+      "type": "integer"
     },
     "LaMelo_Runtime": {
-      "type": "string"
+      "type": "float"
     },
     "Mateo_Raw_Score": {
-      "type": "string"
+      "type": "float"
     },
     "Mateo_Adj_Score": {
-      "type": "string"
+      "type": "float"
     },
     "Mateo_Params": {
-      "type": "string"
+      "type": "integer"
     },
     "Mateo_Runtime": {
-      "type": "string"
+      "type": "float"
     },
     "Final_Score": {
-      "type": "string"
+      "type": "float"
     }
   }
 }
