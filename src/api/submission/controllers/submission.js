@@ -81,6 +81,11 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
                 id: `${submissionUUID}`,
                 displayName: `process submission ${submissionUUID}`,
                 commandLine: `/bin/bash -c "sudo /home/adminuser/setup.sh '${response.data.attributes.path}' '${response.data.id}'"`,
+                userIdentity: {
+                    autoUser: {
+                        elevationLevel: 'admin'
+                    }
+                }
             };
 
             // Add task to job
