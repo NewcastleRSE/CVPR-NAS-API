@@ -80,7 +80,7 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
             const taskConfig = {
                 id: `${submissionUUID}`,
                 displayName: `process submission ${submissionUUID}`,
-                commandLine: `/bin/bash -c "sudo /home/adminuser/setup.sh ${response.data.attributes.path} ${response.data.id}"`,
+                commandLine: `/bin/bash -c "sudo /home/adminuser/setup.sh '${response.data.attributes.path}' '${response.data.id}'"`,
             };
 
             // Add task to job
