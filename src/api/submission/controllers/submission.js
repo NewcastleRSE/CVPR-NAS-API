@@ -85,6 +85,10 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
                     autoUser: {
                         elevationLevel: 'admin'
                     }
+                },
+                constraints: {
+                    maxTaskRetryCount: 3,
+                    maxWallClockTime: 'P1D'
                 }
             };
 
