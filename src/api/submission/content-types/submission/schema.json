@@ -23,6 +23,11 @@
       "required": true,
       "maxLength": 25
     },
+    "user_email": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "manyToOne",
@@ -40,64 +45,40 @@
     "path": {
       "type": "string"
     },
-    "Adaline_Raw_Score": {
+    "Chester_Raw_Score": {
       "type": "float"
     },
-    "Adaline_Adj_Score": {
+    "Chester_Adj_Score": {
       "type": "float"
     },
-    "Adaline_Params": {
+    "Chester_Params": {
       "type": "integer"
     },
-    "Adaline_Runtime": {
+    "Chester_Runtime": {
       "type": "float"
     },
-    "Caitie_Raw_Score": {
+    "Isabella_Raw_Score": {
       "type": "float"
     },
-    "Caitie_Adj_Score": {
+    "Isabella_Adj_Score": {
       "type": "float"
     },
-    "Caitie_Params": {
+    "Isabella_Params": {
       "type": "integer"
     },
-    "Caitie_Runtime": {
+    "Isabella_Runtime": {
       "type": "float"
     },
-    "Fabian_Raw_Score": {
+    "Sadie_Raw_Score": {
       "type": "float"
     },
-    "Fabian_Adj_Score": {
+    "Sadie_Adj_Score": {
       "type": "float"
     },
-    "Fabian_Params": {
+    "Sadie_Params": {
       "type": "integer"
     },
-    "Fabian_Runtime": {
-      "type": "float"
-    },
-    "LaMelo_Raw_Score": {
-      "type": "float"
-    },
-    "LaMelo_Adj_Score": {
-      "type": "float"
-    },
-    "LaMelo_Params": {
-      "type": "integer"
-    },
-    "LaMelo_Runtime": {
-      "type": "float"
-    },
-    "Mateo_Raw_Score": {
-      "type": "float"
-    },
-    "Mateo_Adj_Score": {
-      "type": "float"
-    },
-    "Mateo_Params": {
-      "type": "integer"
-    },
-    "Mateo_Runtime": {
+    "Sadie_Runtime": {
       "type": "float"
     },
     "Final_Score": {
