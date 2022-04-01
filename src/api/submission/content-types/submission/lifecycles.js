@@ -1,5 +1,7 @@
 "use strict";
 const fetch = require("node-fetch");
+const webhook = 'https://hooks.slack.com/services/' + process.env.SLACK_WEBHOOK;
+
 
 module.exports = {
 
@@ -13,7 +15,7 @@ module.exports = {
         text: "NAS submission created - Title : " + title + " UUID : " + uuid
       };
       const response = await fetch(
-        `https://hooks.slack.com/services/`,
+        webhook,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
