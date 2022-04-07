@@ -30,69 +30,41 @@ Newcastle University
 
 ## Getting Started
 
-No specific technology is preferred for the website, however it must be able to deploy Azure based applications to run the competition code.
+This is a back-end application that connects to a front-end created uisng Vue.js. [CVPR-NAS-VUE](https://github.com/NewcastleRSE/CVPR-NAS-VUE).
+Strapi provides Browser based admin access using a registered username and password. 
 
-Project milestones relate to the phases of the competition.
-
-The website must be able to collect data from running the competition submissions and display a ranking of competitor results.
-
-Last years website is available for reference at: 
-
-https://competitions.codalab.org/competitions/29853 
+The competition has 3 stages. Users are able to upload zip files which are received by the Strapi back-end and recorded. Files are then passed to an Azure batch service with a unique id and run using specific datasets. Once the submissions have been executed via the batch pool, results are returned to the back-end and stored against the orignal submission. The website is able to query the back-end for each submission results and display a ranking of competitors based on runtimes and scores.
 
 
 ### Prerequisites
 
-Any tools or versions of languages needed to run code. For example specific Python or Node versions. Minimum hardware requirements also go here.
+Node.js, yarn
 
 ### Installation
 
-How to build or install the applcation.
+Clone the repo into a suitable directory. Create an .env file containing the following variables:
+
+`JWT_SECRET
+API_TOKEN_SALT
+STORAGE_ACCOUNT_NAME
+STORAGE_ACCOUNT_KEY
+STORAGE_CONTAINER_NAME
+BATCH_ACCOUNT_NAME
+BATCH_ACCOUNT_KEY
+BATCH_ENDPOINT
+SLACK_WEBHOOK
+`
 
 ### Running Locally
 
-How to run the application on your local system.
-
-### Running Tests
-
-How to run tests on your local system.
+`yarn start` to start the Strapi admin application.
 
 ## Deployment
 
-### Local
+`yarn build` to build the application ready for deployment. 
 
-Deploying to a production style setup but on the local system. Examples of this would include `venv`, `anaconda`, `Docker` or `minikube`. 
+## Branches
 
-### Production
+Main and dev only
 
-Deploying to the production system. Examples of this would include cloud, HPC or virtual machine. 
-
-## Usage
-
-Any links to production environment, video demos and screenshots.
-
-## Roadmap
-
-- [x] Initial Research  
-- [ ] Minimum viable product <-- You are Here  
-- [ ] Alpha Release  
-- [ ] Feature-Complete Release  
-
-## Contributing
-
-### Main Branch
-Protected and can only be pushed to via pull requests. Should be considered stable and a representation of production code.
-
-### Dev Branch
-Should be considered fragile, code should compile and run but features may be prone to errors.
-
-### Feature Branches
-A branch per feature being worked on.
-
-https://nvie.com/posts/a-successful-git-branching-model/
-
-## License
-
-
-## Acknowledgements
 
