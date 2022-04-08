@@ -12,7 +12,8 @@ const storageAccountName = process.env.STORAGE_ACCOUNT_NAME,
       storageContainerName = process.env.STORAGE_CONTAINER_NAME,
       batchAccountName = process.env.BATCH_ACCOUNT_NAME,
       batchAccountKey = process.env.BATCH_ACCOUNT_KEY,
-      batchEndpoint = process.env.BATCH_ENDPOINT
+      batchEndpoint = process.env.BATCH_ENDPOINT,
+      sasOutputFolderToken = process.env.OUTPUT_FOLDER
 
 // Create storage clients and upload options
 const storageCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey),
@@ -80,7 +81,7 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
             const taskConfig = {
                 id: `${submissionUUID}`,
                 displayName: `process submission ${submissionUUID}`,
-                commandLine: `/bin/bash -c "sudo /home/adminuser/setup.sh '${response.data.attributes.path}' '${response.data.id}'"`,
+                commandLine: `/bin/bash -c "sudo /home/adminuser/setup.sh '${response.data.attributes.path}' '${response.data.id}' > /home/adminuser/${submissionUUID}-output.txt 2>&1"`,
                 userIdentity: {
                     autoUser: {
                         elevationLevel: 'admin'
@@ -89,13 +90,40 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
                 constraints: {
                     maxTaskRetryCount: 3,
                     maxWallClockTime: 'P1D'
-                }
+                },
+                outputFiles: [
+                    {
+                        destination: {
+                            container: {
+                                containerUrl: sasOutputFolderToken,
+                                path: `${submissionUUID}.txt`
+                            }
+                        },
+                        filePattern: `/home/adminuser/${submissionUUID}-output.txt`,
+                        uploadOptions: {
+                            uploadCondition: "taskSuccess"
+                        }
+                    },
+                    {
+                        destination: {
+                            container: {
+                                containerUrl: sasOutputFolderToken,
+                                path: `${submissionUUID}.txt`
+                            }
+                        },
+                        filePattern: `/home/adminuser/${submissionUUID}-output.txt`,
+                        uploadOptions: {
+                            uploadCondition: "taskFailure"
+                        }
+                    },
+                ]
             };
 
             // Add task to job
             const task = batchClient.task.add('test-submissions', taskConfig, function (error, result) {
                 if (error !== null) {
-                    console.log("Error occurred while creating task for " + submissionUUID + ". Details : " + error.response);
+                    console.log("Error occurred while creating task for " + submissionUUID)
+                    console.error(error)
                 }
                 else {
                     console.log("Task for submission : " + submissionUUID + " submitted successfully");
