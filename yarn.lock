@@ -1430,6 +1430,29 @@
   resolved "https://registry.yarnpkg.com/@request/interface/-/interface-0.1.0.tgz#c913504d3dc2810afad555b599aeaec2cc4c6768"
   integrity sha1-yRNQTT3CgQr61VW1ma6uwsxMZ2g=
 
+"@sendgrid/client@^7.6.2":
+  version "7.6.2"
+  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-7.6.2.tgz#5d08949120dad679f34260f1b875b4f57a8d688e"
+  integrity sha512-Yw3i3vPBBwfiIi+4i7+1f1rwQoLlLsu3qW16d1UuRp6RgX6H6yHYb2/PfqwNyCC0qzqIWGUKPWwYe5ggcr5Guw==
+  dependencies:
+    "@sendgrid/helpers" "^7.6.2"
+    axios "^0.26.0"
+
+"@sendgrid/helpers@^7.6.2":
+  version "7.6.2"
+  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-7.6.2.tgz#e4abdd4e259611ed549ae8e0f4a46cd4f587e5d1"
+  integrity sha512-kGW0kM2AOHfXjcvB6Lgwa/nMv8IALu0KyNY9X4HSa3MtLohymuhbG9HgjrOh66+BkbsfA03H3bcT0+sPVJ0GKQ==
+  dependencies:
+    deepmerge "^4.2.2"
+
+"@sendgrid/mail@^7.6.2":
+  version "7.6.2"
+  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-7.6.2.tgz#118650afbb58be82e3178fa172869d929d937118"
+  integrity sha512-IHHZFvgU95aqb11AevQvAfautj2pb8iW8UCiUJ2ae9pRF37e6EkBmU9NgdFjbQ/8Xhhm+KDVDzn/JLxDN/GiBw==
+  dependencies:
+    "@sendgrid/client" "^7.6.2"
+    "@sendgrid/helpers" "^7.6.2"
+
 "@sentry/core@6.17.4":
   version "6.17.4"
   resolved "https://registry.yarnpkg.com/@sentry/core/-/core-6.17.4.tgz#ac23c2a9896b27fe4c532c2013c58c01f39adcdb"
@@ -2733,6 +2756,13 @@ axios@^0.21.1:
   integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
   dependencies:
     follow-redirects "^1.14.0"
+
+axios@^0.26.0:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
+  integrity sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==
+  dependencies:
+    follow-redirects "^1.14.8"
 
 babel-loader@8.2.3:
   version "8.2.3"
@@ -4766,6 +4796,11 @@ follow-redirects@^1.0.0, follow-redirects@^1.14.0, follow-redirects@^1.14.4:
   version "1.14.7"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.7.tgz#2004c02eb9436eee9a21446a6477debf17e81685"
   integrity sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==
+
+follow-redirects@^1.14.8:
+  version "1.14.9"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.9.tgz#dd4ea157de7bfaf9ea9b3fbd85aa16951f78d8d7"
+  integrity sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==
 
 font-awesome@^4.7.0:
   version "4.7.0"
