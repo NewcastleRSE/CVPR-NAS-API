@@ -5,6 +5,8 @@ const { BlobServiceClient, StorageSharedKeyCredential, generateBlobSASQueryParam
 const { BatchServiceClient, BatchSharedKeyCredentials } = require("@azure/batch")
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs')
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 // Load storage and batch environment variables
 const storageAccountName = process.env.STORAGE_ACCOUNT_NAME,
@@ -31,6 +33,61 @@ const batchCredentials = new BatchSharedKeyCredentials(batchAccountName, batchAc
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
+
+function sendEmail(type, submission) {
+
+    let data = {},
+        template = null
+
+    switch (type) {
+        case 'submission':
+            template = 'd-0d6383f26a5046b6b9b72546426f4910'
+            data = {
+                title: submission.attributes.title
+            }
+            break;
+        case 'output':
+
+            const outputContainerName = 'outputs'
+            const outputContainerClient = storageClient.getContainerClient(outputContainerName)
+            const blobName = submission.attributes.uuid + '.txt'
+            const blockBlobClient = outputContainerClient.getBlockBlobClient(blobName)
+
+            // Create expiry date one year in the future
+            let expiry =  new Date();
+            expiry.setFullYear(new Date().getFullYear() + 1)
+
+            // Generate SAS token
+            const sasToken = generateBlobSASQueryParameters({
+                containerName: outputContainerName,
+                blobName: blobName,
+                expiresOn: expiry,
+                permissions: BlobSASPermissions.parse("r")
+            }, storageCredentials)
+
+            template = 'd-0dc8686815744df48bce83201172cffe'
+            data = {
+                title: submission.attributes.title,
+                outputUrl: `${blockBlobClient.url}?${sasToken}`
+            }
+            break;
+    }
+
+    const msg = {
+        to: submission.attributes.user_email, // Change to your recipient
+        from: 'info@nascompetition.com', // Change to your verified sender
+        templateId: template,
+        dynamicTemplateData: data
+      }
+      sgMail
+        .send(msg)
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+}
 
 module.exports = createCoreController('api::submission.submission', ({strapi}) => ({
     async create(ctx) {
@@ -127,6 +184,7 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
                 }
                 else {
                     console.log("Task for submission : " + submissionUUID + " submitted successfully");
+                    sendEmail('submission', response.data)
                 }
             });
         } catch (err) {
@@ -135,4 +193,11 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
 
         return response;
     },
+    async update(ctx) {
+
+        const result = await super.update(ctx);
+        sendEmail('output', result.data)
+
+        return result;
+    }
 }));
