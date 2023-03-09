@@ -35,3 +35,13 @@ jobs:
           BATCH_ENDPOINT=https://cvprnas.uksouth.batch.azure.com
           SAS_PATH=${{ secrets.SAS_PATH }}
           SAS_TOKEN=${{ secrets.SAS_TOKEN }}
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: 'Deploy to Azure Web App'
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: cvprnas
+        publish-profile: ${{ secrets.PUBLISH_PROFILE }}
+        images: cvprnas.azurecr.io/api:${{ github.ref_name }}
