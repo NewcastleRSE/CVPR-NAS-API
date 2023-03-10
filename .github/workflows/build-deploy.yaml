@@ -1,9 +1,9 @@
 name: Build & Deploy
 
 env:
-   REGISTRY: tobemodified
-   IMAGE_NAME: tobemodified
-   APP_NAME: tobemodified
+   REGISTRY: cvprnas.azurecr.io
+   IMAGE_NAME: cvprnas.azurecr.io/api
+   APP_NAME: cvprnas
 
 on:
   release:
