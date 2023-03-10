@@ -1,10 +1,13 @@
 name: Build
 
+env:
+   REGISTRY: cvprnas.azurecr.io/api
+   IMAGE_NAME: cvprnas.azurecr.io/api
+
 on:
   push:
     branches:
-      - '*'
-      - '!main'
+      - 'main'
 
 jobs:
   build:
@@ -13,27 +16,10 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@3.04
+      uses: elgohr/Publish-Docker-Github-Action@v4
       with:
-        registry: cvprnas.azurecr.io
-        name: cvprnas.azurecr.io/api
+        registry: ${{ env.REGISTRY }}
+        name: ${{ env.IMAGE_NAME }}
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
         tags: "latest"
-        buildargs:  |
-          HOST="0.0.0.0"
-          PORT=8080
-          IS_PROXIED=false
-          DATABASE_FILENAME=/home/sqlite/data.db?cache=private&mode=rwc&_journal_mode=WAL
-          PUBLIC_URL="https://cvprnas.azurewebsites.net/"
-          PUBLIC_ADMIN_URL="https://cvprnas.azurewebsites.net/dashboard"
-          JWT_SECRET=${{ secrets.JWT_SECRET }}
-          API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }}
-          STORAGE_ACCOUNT_NAME=cvprnas
-          STORAGE_ACCOUNT_KEY=${{ secrets.STORAGE_ACCOUNT_KEY }}
-          STORAGE_CONTAINER_NAME=submissions
-          BATCH_ACCOUNT_NAME=cvprnas
-          BATCH_ACCOUNT_KEY=${{ secrets.BATCH_ACCOUNT_KEY }}
-          BATCH_ENDPOINT=https://cvprnas.uksouth.batch.azure.com
-          SAS_PATH=${{ secrets.SAS_PATH }}
-          SAS_TOKEN=${{ secrets.SAS_TOKEN }}
