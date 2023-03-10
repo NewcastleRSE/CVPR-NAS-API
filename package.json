@@ -2,7 +2,7 @@
   "name": "cvpr-nas-api",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "API, batch controller and storage logic for CVPRNAS",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -12,24 +12,27 @@
   "devDependencies": {},
   "dependencies": {
     "@azure/batch": "^10.2.0",
-    "@azure/storage-blob": "^12.8.0",
+    "@azure/storage-blob": "^12.13.0",
     "@sendgrid/mail": "^7.6.2",
-    "@sentry/node": "^6.17.4",
-    "@sentry/tracing": "^6.17.4",
-    "@strapi/plugin-i18n": "4.0.4",
-    "@strapi/plugin-users-permissions": "4.0.4",
-    "@strapi/strapi": "4.0.4",
-    "sqlite3": "5.0.2",
+    "@strapi/plugin-documentation": "^4.7.0",
+    "@strapi/plugin-i18n": "^4.7.0",
+    "@strapi/plugin-sentry": "^4.7.0",
+    "@strapi/plugin-users-permissions": "^4.7.0",
+    "@strapi/strapi": "^4.7.0",
+    "mysql": "2.18.1",
+    "request": "^2.88.2",
+    "strapi-plugin-import-export-entries": "^1.18.0",
+    "strapi-plugin-transformer": "^2.1.1",
     "uuid": "^8.3.2"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Mark Turner"
   },
   "strapi": {
     "uuid": "9cdc1219-e464-4152-9da4-ceaac8834149"
   },
   "engines": {
-    "node": ">=12.x.x <=16.x.x",
+    "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"

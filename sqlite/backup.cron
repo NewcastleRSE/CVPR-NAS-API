@@ -1,3 +1,0 @@
-*/5 * * * * sh /usr/local/src/sqlite/persist.sh >> /var/log/persist.log 2>&1
-0 0 * * * sh /usr/local/src/sqlite/dailyBackup.sh >> /var/log/backup.log 2>&1
-# An empty line is required at the end of this file for a valid cron file.
