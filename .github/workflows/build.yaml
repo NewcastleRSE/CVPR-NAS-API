@@ -1,8 +1,8 @@
 name: Build
 
 env:
-   REGISTRY: tobemodified
-   IMAGE_NAME: tobemodified
+   REGISTRY: cvprnas.azurecr.io/api
+   IMAGE_NAME: cvprnas.azurecr.io/api
 
 on:
   push:
