@@ -8,6 +8,9 @@ const fs = require('fs')
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
+const submissionTemplate = process.env.SENDGRID_SUBMISSION_TEMPLATE,
+      completedTemplate = process.env.SENDGRID_COMPLETED_TEMPLATE
+
 // Load storage and batch environment variables
 const storageAccountName = process.env.STORAGE_ACCOUNT_NAME,
       storageAccountKey = process.env.STORAGE_ACCOUNT_KEY,
@@ -41,7 +44,7 @@ function sendEmail(type, submission) {
 
     switch (type) {
         case 'submission':
-            template = 'd-0d6383f26a5046b6b9b72546426f4910'
+            template = SENDGRID_SUBMISSION_TEMPLATE
             data = {
                 title: submission.attributes.title
             }
@@ -65,7 +68,7 @@ function sendEmail(type, submission) {
                 permissions: BlobSASPermissions.parse("r")
             }, storageCredentials)
 
-            template = 'd-0dc8686815744df48bce83201172cffe'
+            template = SENDGRID_COMPLETED_TEMPLATE
             data = {
                 title: submission.attributes.title,
                 outputUrl: `${blockBlobClient.url}?${sasToken}`
