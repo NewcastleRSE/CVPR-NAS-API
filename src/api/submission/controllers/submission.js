@@ -8,6 +8,11 @@ const fs = require('fs')
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
+console.log(process.env.SENDGRID_API_KEY);
+console.log(process.env.SENDGRID_SUBMISSION_TEMPLATE);
+console.log(process.env.SENDGRID_COMPLETED_TEMPLATE);
+
+
 const submissionTemplate = process.env.SENDGRID_SUBMISSION_TEMPLATE,
       completedTemplate = process.env.SENDGRID_COMPLETED_TEMPLATE
 
@@ -73,6 +78,7 @@ function sendEmail(type, submission) {
                 title: submission.attributes.title,
                 outputUrl: `${blockBlobClient.url}?${sasToken}`
             }
+            console.log(outputUrl);
             break;
     }
 
