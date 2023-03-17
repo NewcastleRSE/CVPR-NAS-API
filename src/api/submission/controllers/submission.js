@@ -44,6 +44,8 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 function sendEmail(type, submission) {
 
+    console.log(`Sending ${type} email for submission ${submission}`)
+  
     let data = {},
         template = null
 
@@ -53,6 +55,7 @@ function sendEmail(type, submission) {
             data = {
                 title: submission.attributes.title
             }
+            console.log(`Template ${template} for submission ${data.title}`)
             break;
         case 'output':
 
@@ -78,9 +81,13 @@ function sendEmail(type, submission) {
                 title: submission.attributes.title,
                 outputUrl: `${blockBlobClient.url}?${sasToken}`
             }
-            console.log(outputUrl);
+        
+            console.log(`Template ${template} for submission ${data.title}`)
+            console.log(data.outputUrl)
             break;
     }
+  
+    console.log(`Sending email to ${submission.attributes.user_email}`)
 
     const msg = {
         to: submission.attributes.user_email, // Change to your recipient
