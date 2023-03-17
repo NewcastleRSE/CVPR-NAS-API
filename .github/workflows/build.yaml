@@ -1,7 +1,7 @@
 name: Build
 
 env:
-   REGISTRY: cvprnas.azurecr.io/api
+   REGISTRY: cvprnas.azurecr.io
    IMAGE_NAME: api
 
 on:
