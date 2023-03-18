@@ -51,7 +51,7 @@ function sendEmail(type, submission) {
 
     switch (type) {
         case 'submission':
-            template = SENDGRID_SUBMISSION_TEMPLATE
+            template = submissionTemplate
             data = {
                 title: submission.attributes.title
             }
@@ -76,7 +76,7 @@ function sendEmail(type, submission) {
                 permissions: BlobSASPermissions.parse("r")
             }, storageCredentials)
 
-            template = SENDGRID_COMPLETED_TEMPLATE
+            template = completedTemplate
             data = {
                 title: submission.attributes.title,
                 outputUrl: `${blockBlobClient.url}?${sasToken}`
