@@ -48,7 +48,13 @@ function sendEmail(type, submission) {
         case 'submission':
             template = submissionTemplate
             data = {
-                title: submission.attributes.title
+                title: submission.attributes.title,
+                Sender_Name : "CVPRNAS 2023 Submissions",
+                Sender_Email : "submissions@nascompetition.com",
+                Sender_Address : "Newcastle University",
+                Sender_State : "Tyne and Wear",
+                Sender_Zip : "NE1 7RU",
+                Sender_Country : "United Kingdom"
             }
             break;
         case 'output':
@@ -73,7 +79,13 @@ function sendEmail(type, submission) {
             template = completedTemplate
             data = {
                 title: submission.attributes.title,
-                outputUrl: `${blockBlobClient.url}?${sasToken}`
+                outputUrl: `${blockBlobClient.url}?${sasToken}`,
+                Sender_Name : "CVPRNAS 2023 Submissions",
+                Sender_Email : "submissions@nascompetition.com",
+                Sender_Address : "Newcastle University",
+                Sender_State : "Tyne and Wear",
+                Sender_Zip : "NE1 7RU",
+                Sender_Country : "United Kingdom"
             }
         
             break;
