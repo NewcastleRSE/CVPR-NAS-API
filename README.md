@@ -66,9 +66,9 @@ APP_KEYS=
 SENTRY_DSN=           
 PUBLIC_URL=
 PUBLIC_ADMIN_URL=
-
-SLACK_WEBHOOK is in dvelopment
 `
+
+SLACK_WEBHOOK is in development, currently not functional.
 
 ### Running Locally
 
