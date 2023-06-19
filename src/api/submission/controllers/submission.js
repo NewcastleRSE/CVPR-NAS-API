@@ -146,6 +146,11 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
 
             // Create DB Entry
             response = await super.create(ctx)
+
+            // update user submissionCount
+            console.log(`Updating user submission count ${submission}`)
+            await strapi.services.customServiceName.updateUser(user_id)
+
             
         } catch (err) {
             console.error(err.message)
