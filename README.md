@@ -44,20 +44,36 @@ Node.js, yarn
 
 Clone the repo into a suitable directory. Create an .env file containing the following variables:
 
-`JWT_SECRET
-API_TOKEN_SALT
-STORAGE_ACCOUNT_NAME
-STORAGE_ACCOUNT_KEY
-STORAGE_CONTAINER_NAME
-BATCH_ACCOUNT_NAME
-BATCH_ACCOUNT_KEY
-BATCH_ENDPOINT
-SLACK_WEBHOOK
+`
+ADMIN_JWT_SECRET=
+JWT_SECRET=
+API_TOKEN_SALT=
+STORAGE_ACCOUNT_NAME=
+STORAGE_ACCOUNT_KEY=
+STORAGE_CONTAINER_NAME=
+BATCH_ACCOUNT_NAME=
+BATCH_ACCOUNT_KEY=
+BATCH_ENDPOINT=
+SLACK_WEBHOOK=
+SENDGRID_API_KEY=
+DATABASE_PORT=
+DATABASE_SSL=
+DATABASE_NAME=
+DATABASE_USERNAME=
+DATABASE_PASSWORD=
+DATABASE_HOST=
+APP_KEYS=
+SENTRY_DSN=           
+PUBLIC_URL=
+PUBLIC_ADMIN_URL=
+
+SLACK_WEBHOOK is in dvelopment
 `
 
 ### Running Locally
 
-`yarn start` to start the Strapi admin application.
+`yarn start` to start the Strapi admin application. 
+`yarn develop` will put the app in development mode and allow the change of the Content-Type objects
 
 ## Deployment
 
