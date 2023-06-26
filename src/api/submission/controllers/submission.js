@@ -147,9 +147,32 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
             // Create DB Entry
             response = await super.create(ctx)
 
+
+            // Beginning of code to update the user submissionCount
+
+            /*
+
             // update user submissionCount
             console.log(`Updating user submission count ${submission}`)
-            await strapi.services.customServiceName.updateUser(user_id)
+         
+            // http://localhost:1337/api/users/1
+
+            const entry = await strapi.db.query('plugin::users-permissions.user').findOne({
+                where: { email: email }
+              })
+
+              console.log(entry);
+
+              
+             // http://localhost:1337/api/users/:id
+
+            let updatedUser = await strapi.query("plugin::users-permissions.user").update({
+                where: { id: newUser.id },
+            }); 
+            
+            */
+
+            
 
             
         } catch (err) {

@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = createCoreController('api::user.user', ({strapi}) => ({
+const { createCoreController } = require('@strapi/strapi').factories; 
+
+/*module.exports = createCoreController('api::user.user', ({strapi}) => ({
 
     async find(ctx) {
         const user = ctx.state.user;
@@ -12,4 +14,10 @@ module.exports = createCoreController('api::user.user', ({strapi}) => ({
       },
 
 
-}));
+})); */
+
+function updateUser(type, user) {
+
+  console.log(user.id);
+
+}
