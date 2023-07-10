@@ -158,27 +158,27 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
                 where: { email: user_email }
               })
 
-                user_entry.submissionCount = user_entry.submissionCount + 1
-       
-                // set submission limit
+            user_entry.submissionCount = user_entry.submissionCount + 1
+    
+            // set submission limit
 
-                if(user_entry.submissionCount <= 7) {
+            if(user_entry.submissionCount <= 7) {
 
-                    await strapi.query("plugin::users-permissions.user").update({
-                        where: { id: user_entry.id },
-                        data: {
-                            submissionCount: user_entry.submissionCount
-                        }
-                    }); 
+                await strapi.query("plugin::users-permissions.user").update({
+                    where: { id: user_entry.id },
+                    data: {
+                        submissionCount: user_entry.submissionCount
+                    }
+                }); 
 
-                    // Create DB Entry
-                    response = await super.create(ctx)           
-                }
-                else {
+                // Create DB Entry
+                response = await super.create(ctx)           
+            }
+            else {
 
-                    // TODO return error message to the user
-                    console.log('reached submission limit')  
-                }
+                // TODO return error message to the user
+                console.log('reached submission limit')  
+            }
             
         } catch (err) {
             console.error(err.message)
