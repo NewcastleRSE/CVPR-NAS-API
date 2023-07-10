@@ -144,36 +144,42 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
             ctx.request.body.data.path = sasUrl
             ctx.request.body.data = JSON.stringify(ctx.request.body.data)
 
-            // Create DB Entry
-            response = await super.create(ctx)
+            // get user email
+            const form_data = JSON.parse(ctx.request.body.data)
+            const user_email = form_data["user_email"]
 
-
-            // Beginning of code to update the user submissionCount
-
-            /*
-
+        
             // update user submissionCount
-            console.log(`Updating user submission count ${submission}`)
+            console.log(`Updating user submission count`)
          
             // http://localhost:1337/api/users/1
 
-            const entry = await strapi.db.query('plugin::users-permissions.user').findOne({
-                where: { email: email }
+            const user_entry = await strapi.db.query('plugin::users-permissions.user').findOne({
+                where: { email: user_email }
               })
 
-              console.log(entry);
+                user_entry.submissionCount = user_entry.submissionCount + 1
+       
+             // set submission limit
 
-              
-             // http://localhost:1337/api/users/:id
+             if(user_entry.submissionCount <= 7) {
 
-            let updatedUser = await strapi.query("plugin::users-permissions.user").update({
-                where: { id: newUser.id },
-            }); 
-            
-            */
+                await strapi.query("plugin::users-permissions.user").update({
+                    where: { id: user_entry.id },
+                    data: {
+                        submissionCount: user_entry.submissionCount
+                    }
+                }); 
 
-            
+                // Create DB Entry
+                response = await super.create(ctx)
+                        
+             }
+             else {
 
+                // TODO return error message to the user
+                console.log('reached submission limit')  
+             }
             
         } catch (err) {
             console.error(err.message)
