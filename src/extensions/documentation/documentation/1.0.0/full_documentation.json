@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-03-18T15:35:39.796Z"
+    "x-generation-date": "2023-07-11T09:26:07.374Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -28,7 +28,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8080/api",
+      "url": "http://localhost:1337/api",
       "description": "Development server"
     }
   ],
@@ -1424,6 +1424,9 @@
                                 }
                               }
                             }
+                          },
+                          "submissionCount": {
+                            "type": "integer"
                           },
                           "createdAt": {
                             "type": "string",
@@ -3428,6 +3431,9 @@
                                 }
                               }
                             }
+                          },
+                          "submissionCount": {
+                            "type": "integer"
                           },
                           "createdAt": {
                             "type": "string",
@@ -5466,6 +5472,9 @@
                               }
                             }
                           },
+                          "submissionCount": {
+                            "type": "integer"
+                          },
                           "createdAt": {
                             "type": "string",
                             "format": "date-time"
@@ -7469,6 +7478,9 @@
                                 }
                               }
                             }
+                          },
+                          "submissionCount": {
+                            "type": "integer"
                           },
                           "createdAt": {
                             "type": "string",
@@ -14576,6 +14588,9 @@
                                             }
                                           }
                                         },
+                                        "submissionCount": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -15900,6 +15915,9 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "submissionCount": {
+                                          "type": "integer"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -17259,6 +17277,9 @@
                                             }
                                           }
                                         },
+                                        "submissionCount": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -18583,6 +18604,9 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "submissionCount": {
+                                          "type": "integer"
                                         },
                                         "createdAt": {
                                           "type": "string",
@@ -19931,6 +19955,9 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "submissionCount": {
+                                                        "type": "integer"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -21285,6 +21312,9 @@
                                                             }
                                                           }
                                                         }
+                                                      },
+                                                      "submissionCount": {
+                                                        "type": "integer"
                                                       },
                                                       "createdAt": {
                                                         "type": "string",
@@ -22673,6 +22703,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "submissionCount": {
+                                                        "type": "integer"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -24027,6 +24060,9 @@
                                                           }
                                                         }
                                                       },
+                                                      "submissionCount": {
+                                                        "type": "integer"
+                                                      },
                                                       "createdAt": {
                                                         "type": "string",
                                                         "format": "date-time"
@@ -24313,6 +24349,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "submissionCount": {
+                "type": "integer"
               }
             }
           }
@@ -25519,6 +25558,9 @@
                                             }
                                           }
                                         },
+                                        "submissionCount": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -25635,6 +25677,9 @@
                     }
                   }
                 }
+              },
+              "submissionCount": {
+                "type": "integer"
               },
               "createdAt": {
                 "type": "string",
@@ -26883,6 +26928,9 @@
                                             }
                                           }
                                         },
+                                        "submissionCount": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -26999,6 +27047,9 @@
                     }
                   }
                 }
+              },
+              "submissionCount": {
+                "type": "integer"
               },
               "createdAt": {
                 "type": "string",
@@ -28280,6 +28331,9 @@
                                             }
                                           }
                                         },
+                                        "submissionCount": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -28396,6 +28450,9 @@
                     }
                   }
                 }
+              },
+              "submissionCount": {
+                "type": "integer"
               },
               "createdAt": {
                 "type": "string",
@@ -29644,6 +29701,9 @@
                                             }
                                           }
                                         },
+                                        "submissionCount": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -29760,6 +29820,9 @@
                     }
                   }
                 }
+              },
+              "submissionCount": {
+                "type": "integer"
               },
               "createdAt": {
                 "type": "string",
