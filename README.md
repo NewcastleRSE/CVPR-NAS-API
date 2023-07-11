@@ -8,6 +8,8 @@ Their code based entry is then uploaded to the same website which must then allo
 
 Between 5-10 submissions are expected per day during the allowed submission period. Competitors will ideally have email notification of their code status. It is expected that code will be uploaded in a zip format.
 
+A submission limit is set against each user, this should be zero at the beginning of the competition. A submission limit is set in the controllers/submision.js file. This can be updated as preferred and individual User limits can be changed (if necessary) through the Strapi admin content manager.
+
 
 ### Project Team
 Stephen McGough - ([stephen.mcgough@newcastle.ac.uk](mailto:stephen.mcgough@newcastle.ac.uk))
