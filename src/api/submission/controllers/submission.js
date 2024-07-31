@@ -199,7 +199,7 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
                 },
                 constraints: {
                     maxTaskRetryCount: 3,
-                    maxWallClockTime: 'P0Y0M0DT24H0M0S'
+                    maxWallClockTime: 'P0Y0M0DT1H0M0S'
                 },
                 outputFiles: [
                     {
