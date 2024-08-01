@@ -49,7 +49,7 @@ function sendEmail(type, submission) {
             template = submissionTemplate
             data = {
                 title: submission.attributes.title,
-                Sender_Name : "CVPRNAS 2023 Submissions",
+                Sender_Name : "CVPRNAS 2024 Submissions",
                 Sender_Email : "submissions@nascompetition.com",
                 Sender_Address : "Newcastle University",
                 Sender_State : "Tyne and Wear",
@@ -80,7 +80,7 @@ function sendEmail(type, submission) {
             data = {
                 title: submission.attributes.title,
                 outputUrl: `${blockBlobClient.url}?${sasToken}`,
-                Sender_Name : "CVPRNAS 2023 Submissions",
+                Sender_Name : "CVPRNAS 2024 Submissions",
                 Sender_Email : "submissions@nascompetition.com",
                 Sender_Address : "Newcastle University",
                 Sender_State : "Tyne and Wear",
