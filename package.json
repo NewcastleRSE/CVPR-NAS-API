@@ -26,6 +26,7 @@
     "request": "^2.88.2",
     "strapi-plugin-import-export-entries": "^1.18.0",
     "strapi-plugin-transformer": "^2.1.1",
+    "styled-components": "^6.1.12",
     "uuid": "^8.3.2"
   },
   "author": {
