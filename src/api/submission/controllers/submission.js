@@ -49,7 +49,7 @@ function sendEmail(type, submission) {
             template = submissionTemplate
             data = {
                 title: submission.attributes.title,
-                Sender_Name : "CVPRNAS 2023 Submissions",
+                Sender_Name : "CVPRNAS 2024 Submissions",
                 Sender_Email : "submissions@nascompetition.com",
                 Sender_Address : "Newcastle University",
                 Sender_State : "Tyne and Wear",
@@ -80,7 +80,7 @@ function sendEmail(type, submission) {
             data = {
                 title: submission.attributes.title,
                 outputUrl: `${blockBlobClient.url}?${sasToken}`,
-                Sender_Name : "CVPRNAS 2023 Submissions",
+                Sender_Name : "CVPRNAS 2024 Submissions",
                 Sender_Email : "submissions@nascompetition.com",
                 Sender_Address : "Newcastle University",
                 Sender_State : "Tyne and Wear",
@@ -113,44 +113,79 @@ module.exports = createCoreController('api::submission.submission', ({strapi}) =
         let response = null
         const submissionUUID = uuidv4()
 
-        // Upload File
-        try {
-            const file = ctx.request.files['files.file']
-            const stream = fs.createReadStream(file.path);
-            const blobName = submissionUUID + '.zip'
-            const blockBlobClient = containerClient.getBlockBlobClient(blobName)
+        // Unwrap request body and add auto generated UUID
+        ctx.request.body.data = JSON.parse(ctx.request.body.data)
+        ctx.request.body.data.uuid = submissionUUID
+        ctx.request.body.data = JSON.stringify(ctx.request.body.data)
 
-            await blockBlobClient.uploadStream(stream, uploadOptions.bufferSize, uploadOptions.maxBuffers, { blobHTTPHeaders: { blobContentType: file.type } })
-            console.log(`File ${blobName} uploaded to Azure Blob storage.`)
+        // get user email
+        const form_data = JSON.parse(ctx.request.body.data)
+        const user_email = form_data["user_email"]
 
-            // Create expiry date one year in the future
-            let expiry =  new Date();
-            expiry.setFullYear(new Date().getFullYear() + 1)
-            
-            // Generate SAS token
-            const sasToken = generateBlobSASQueryParameters({
-                containerName: storageContainerName,
-                blobName: blobName,
-                expiresOn: expiry,
-                permissions: BlobSASPermissions.parse("r")
-            }, storageCredentials)
+        const user_entry = await strapi.db.query('plugin::users-permissions.user').findOne({
+            where: { email: user_email }
+        })
 
-            //Generate SAS URL
-            const sasUrl = `${blockBlobClient.url}?${sasToken}`
-            
-            // Unwrap request body and add auto generated UUID
-            ctx.request.body.data = JSON.parse(ctx.request.body.data)
-            ctx.request.body.data.uuid = submissionUUID
-            ctx.request.body.data.path = sasUrl
-            ctx.request.body.data = JSON.stringify(ctx.request.body.data)
-
-            // Create DB Entry
-            response = await super.create(ctx)
-            
-        } catch (err) {
-            console.error(err.message)
-        }
         
+        // check the user submission count, if ok try file upload 
+        if(user_entry.submissionCount <= 5) {
+
+             // Upload File
+            try {
+                const file = ctx.request.files['files.file']
+                const stream = fs.createReadStream(file.path);
+                const blobName = submissionUUID + '.zip'
+                const blockBlobClient = containerClient.getBlockBlobClient(blobName)
+
+                await blockBlobClient.uploadStream(stream, uploadOptions.bufferSize, uploadOptions.maxBuffers, { blobHTTPHeaders: { blobContentType: file.type } })
+                console.log(`File ${blobName} uploaded to Azure Blob storage.`)
+
+                // Create expiry date one year in the future
+                let expiry =  new Date();
+                expiry.setFullYear(new Date().getFullYear() + 1)
+                
+                // Generate SAS token
+                const sasToken = generateBlobSASQueryParameters({
+                    containerName: storageContainerName,
+                    blobName: blobName,
+                    expiresOn: expiry,
+                    permissions: BlobSASPermissions.parse("r")
+                }, storageCredentials)
+
+                //Generate SAS URL
+                const sasUrl = `${blockBlobClient.url}?${sasToken}`
+
+                // Unwrap request body and add SAS URL
+                ctx.request.body.data = JSON.parse(ctx.request.body.data)
+                ctx.request.body.data.path = sasUrl
+                ctx.request.body.data = JSON.stringify(ctx.request.body.data)
+
+                // update user submissionCount
+                console.log(`Updating user submission count`)
+                user_entry.submissionCount = user_entry.submissionCount + 1
+
+                await strapi.query("plugin::users-permissions.user").update({
+                    where: { id: user_entry.id },
+                    data: {
+                        submissionCount: user_entry.submissionCount
+                    }
+                }); 
+    
+                // Create DB Entry
+                response = await super.create(ctx)         
+            
+                
+            } catch (err) {
+                console.error(err.message)
+            }      
+        }
+        else {
+
+            // TODO return error message to the user
+            console.log('reached submission limit')  
+        }
+
+
         try {
             // Task configuration object
             const taskConfig = {
